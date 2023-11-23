@@ -14,7 +14,6 @@ public class AdminController {
 	@RequestMapping("/admin")
 	public String adminPage(Model model) {
 		model.addAttribute("mess", "Welcome to admin page");
-
 		CustomUserDetails user =  (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("user", user);
 		System.out.println(user);

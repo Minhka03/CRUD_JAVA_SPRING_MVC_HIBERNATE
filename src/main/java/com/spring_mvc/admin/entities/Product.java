@@ -1,5 +1,7 @@
 package com.spring_mvc.admin.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="products")
@@ -30,6 +33,8 @@ public class Product {
 	@JoinColumn(name = "categoryId",referencedColumnName = "categoryId")
 	private Category category;
 	
+	@OneToMany(mappedBy = "product")
+	private Set<Cart> carts;
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
@@ -102,6 +107,12 @@ public class Product {
 		this.category = category;
 	}
 
-	
+	public Set<Cart> getCarts() {
+		return carts;
+	}
+
+	public void setCarts(Set<Cart> carts) {
+		this.carts = carts;
+	}
 	
 }

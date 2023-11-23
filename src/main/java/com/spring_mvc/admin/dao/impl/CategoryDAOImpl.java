@@ -32,7 +32,6 @@ public class CategoryDAOImpl implements CategoryDAO{
 
 	@Override
 	public Boolean create(Category cate) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -41,6 +40,7 @@ public class CategoryDAOImpl implements CategoryDAO{
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			session.close();
 		}
@@ -69,7 +69,6 @@ public class CategoryDAOImpl implements CategoryDAO{
 		try {
 			session.beginTransaction();
 			session.update(cate);
-			System.out.println("loi o day");
 			session.getTransaction().commit();
 			System.out.println(cate);
 			return true;

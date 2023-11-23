@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO{
 			User user = (User) session.createQuery("from User where userName = :userName")
 			.setParameter("userName", username)
 			.uniqueResult();
-			System.out.println(user);
 			return user;
 		} catch (Exception e) {
 			

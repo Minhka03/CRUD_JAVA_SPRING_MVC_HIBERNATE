@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Định nghĩa các view default -->
+
+	<definition name="homelayout" template="/views/home/layouts/homelayout.jsp">
+
+		<put-attribute name="title"
+			value="Ví dụ về Apache tile 3" type="string" />
+
+		<put-attribute name="footer"
+			value="/views/home/layouts/footer.jsp" />
+
+		<put-attribute name="header"
+			value="/views/home/layouts/header.jsp" />
+
+		<put-attribute name="body" value="" /> 
+
+	</definition>
+
+	<!-- Định nghĩa các view khác -->
+
+	<definition name="homeCus" extends="homelayout">
+
+		<put-attribute name="body"
+			value="/views/home/home.jsp" />
+
+	</definition>
+	
+	<definition name="product" extends="homelayout">
+
+		<put-attribute name="body"
+			value="/views/home/product/product.jsp" />
+	</definition>
+	<definition name="Cart" extends="homelayout">
+
+		<put-attribute name="body"
+			value="/views/home/cart.jsp" />
+	</definition>
+
+	
+</tiles-definitions>

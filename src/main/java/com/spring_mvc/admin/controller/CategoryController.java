@@ -13,17 +13,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring_mvc.admin.dao.CategoryDAO;
 import com.spring_mvc.admin.entities.Category;
-
+@RequestMapping(value = "/admin")
 @Controller
 public class CategoryController {
 	
 	
 	@Autowired
 	private CategoryDAO categoryDao;
+	
 	@RequestMapping(value="/category")
 	public String index(Model model, @RequestParam(name="pageno", required = false)String pageno , @RequestParam(name="keyword" , required = false)String keyword)  {
 		int pageNo = 1;
@@ -43,14 +45,13 @@ public class CategoryController {
 		} else {
 			model.addAttribute("listPage", listPage);
 			model.addAttribute("totalPage", totalPage);
-			System.out.println("kkkk");
 			return "admin/category/index";
 			
 		}
 	}
 	
 	
-	@GetMapping(value="/category/add")
+	@GetMapping (value="/category/add")
 	public String add(Model model) {
 		Category cate = new Category();
 		model.addAttribute("category", cate);
@@ -58,25 +59,24 @@ public class CategoryController {
 	}
 	
 	
-	@PostMapping(value="/category/insertCategory")
-	public String save (@Valid @ModelAttribute("category")Category category, BindingResult result , Model model,  HttpServletRequest request) {
-		System.out.println(result.hasErrors());
+	@PostMapping(value="/category/add")
+	public String save (@Valid @ModelAttribute("category")Category category, BindingResult result,  HttpServletRequest request, Model model) {
+		
 		if(result.hasErrors()) {
-			System.out.println("chua nhap");
 			model.addAttribute("category", category);
 			return "admin/category/add";
 		}else {
-			System.out.println("nhap");
-			if(categoryDao.create(category)) {
+			
+			if(categoryDao.create(category)) {	
 				List<Category> list = categoryDao.getAll();
 				model.addAttribute("list", list);
-				return "redirect:/category";
+				return "redirect:/admin/category";
 			} 
 			return "admin/category/add";
 		}
 	}
 	
-	@GetMapping(value = "/editCategory/{id}")
+	@GetMapping(value = "/category/editCategory/{id}")
 	public String edit(@PathVariable Integer id , Model model) {
 		Category category = categoryDao.find(id);
 		model.addAttribute("category", category);
@@ -84,27 +84,26 @@ public class CategoryController {
 	}
 	
 	
-	@PostMapping(value = "/updateCategory")
+	@PostMapping(value = "/category/editCategory/{id}")
 	public String update(@Valid @ModelAttribute("category")Category category , BindingResult result , Model model) {
 		if(result.hasErrors()) {
-			
 			return "admin/category/edit";
+			
 		}else {
 			if(categoryDao.update(category)) {
 				List<Category> list = categoryDao.getAll();
 				model.addAttribute("list", list);
-				return "redirect:/category";
+				return "redirect:/admin/category";
 			} 
-			System.out.println("loi");
 			return "admin/category/edit";
+			
 		}
 	}
 	
 	@GetMapping(value = "/category/deleteCategory/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		categoryDao.delete(id);
-		System.out.println("kkkkkkkkk");
-		return "redirect:/category";
+		return "redirect:/admin/category";
 	}
 	
 }

@@ -49,7 +49,7 @@
 							</div>
 						</form>
 						<div class="form-group me-2">
-							<a href="${pageContext.request.contextPath}/product/add"
+							<a href="${pageContext.request.contextPath}/admin/product/add"
 								class="btn btn-primary"><i class="fa-solid fa-plus"></i></a>
 						</div>
 					</div>

@@ -31,36 +31,48 @@
 				<%@ include file="/common/admin/header.jsp"%>
 
 				<!--header-->
-				<form:form class="m-5" action="${pageContext.request.contextPath}/product/updateProduct" modelAttribute="product"
-					method="post" enctype="multipart/form-data">
-					  <form:input path="productId" type="hidden"/>
+				<form:form class="m-5"
+					action="${pageContext.request.contextPath}/admin/product/editProduct/${product.productId}"
+					modelAttribute="product" method="post"
+					enctype="multipart/form-data">
+					<form:input path="productId" type="hidden" />
 					<h5 class="text-center">Thêm mới sản phẩm</h5>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Tên sản phẩm</label> <form:input type="text"
-								path="productName" class="form-control"/> 
+							<label for="inputCity">Tên sản phẩm</label>
+							<form:input type="text" path="productName" class="form-control" />
+						
 						</div>
 						<div class="form-group col-md-6">
-							<label for="inputCity">Giá sản phẩm</label> <form:input type="text"
-								path="price" class="form-control"/>
+							<label for="inputCity">Giá sản phẩm</label>
+							<form:input type="text" path="price" class="form-control" />
+							
 						</div>
 						<div class="form-group col-md-6">
-							<form:select path="category.categoryId" class="form-control" >
-									<form:options  items="${listCategory}" itemLabel="categoryName" itemValue="categoryId" ></form:options>
+							<form:select path="category.categoryId" class="form-control">
+								<form:options items="${listCategory}" itemLabel="categoryName"
+									itemValue="categoryId"></form:options>
 							</form:select>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="inputCity">Giá sale sản phẩm</label> <form:input
-								type="text" path="sale_price" class="form-control"/> 
+							<label for="inputCity">Giá sale sản phẩm</label>
+							<form:input type="text" path="sale_price" class="form-control" />
+							
 						</div>
 						<div class="form-group col-md-6">
 							<label for="inputCity">Mô tả</label>
 							<form:textarea rows="10" path="description" class="form-control"
 								cols=""></form:textarea>
+								
 						</div>
 						<div class="form-group col-md-6">
-							<label for="inputCity">Ảnh sản phẩm</label> <form:input type="file"
-								path="image" class="form-control"/> 
+							<label for="inputCity">Ảnh sản phẩm</label>
+							<form:input type="file" id="my_img" onchange="file_image()"
+								path="image" class="form-control" />
+								
+							<img alt="" class="mt-3" id="image_preview"
+								src="${pageContext.request.contextPath}/resources/uploads/images/${product.image}"
+								width="300px">
 						</div>
 
 					</div>
@@ -89,6 +101,19 @@
 			href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
 			target="_blank" class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
 	</div>
+
+	<script type="text/javascript">
+		function file_image() {
+			var file = document.getElementById('my_img').files[0]
+			var fr = new FileReader()
+			fr.readAsDataURL(file)
+			fr.onload = function(e) {
+				var img = document.getElementById('image_preview');
+				img.src = this.result;
+			}
+		}
+	</script>
+
 	<script
 		src="<c:url value="/template/admin/assets/vendor/libs/jquery/jquery.js" />"></script>
 

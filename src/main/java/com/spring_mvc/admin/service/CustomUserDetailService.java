@@ -33,7 +33,6 @@ public class CustomUserDetailService implements UserDetailsService{
 	private UserDetails loadUser(String username) {
 		User user = userDAO.findByUserName(username);
 		System.out.println(user);
-		System.out.println(username);
         if (user==null){
             return null;
         }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,29 +30,27 @@
 				<%@ include file="/common/admin/header.jsp"%>
 
 				<!--header-->
-				<form class="m-5" action="insertCategory" method="post">
+				<f:form class="m-5" action="add" method="post" modelAttribute="category">
 					<h5 class="text-center">Thêm mới Danh mục Category</h5>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Tên Danh mục</label> <input type="text"
-								name="categoryName" class="form-control">
-							<span class="text-danger" name="categoryName" ></span>
+							<label for="inputCity">Tên Danh mục</label> 
+							<f:input type="text" path="categoryName" class="form-control"/>
+							<f:errors path="categoryName" cssClass="text-danger"></f:errors>
 						</div>
 					</div>
 
 
 					<label for="inputCity">Trạng thái</label>
 					<div class="form-group col-md-6">
-						<input type="radio" name="categoryStatus" checked="checked"
-							value="1" id="inputCity">Active
+						<f:radiobutton path="categoryStatus" checked="checked"
+							value="1" id="inputCity"/>Active
 					</div>
 					<div class="form-group col-md-6">
-						<input type="radio" name="categoryStatus" value="0" id="inputCity">Hidden
+						<f:radiobutton  path="categoryStatus" value="0" id="inputCity"/>Hidden
 					</div>
-
-
-					<button type="submit" class="btn btn-primary">Add</button>
-				</form>
+					<f:button type="submit" class="btn btn-primary">Add</f:button>
+				</f:form>
 
 				<div class="content-wrapper">
 

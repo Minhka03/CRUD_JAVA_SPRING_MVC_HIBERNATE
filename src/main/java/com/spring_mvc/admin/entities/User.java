@@ -40,6 +40,17 @@ public class User {
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Set<User_Role> userRoles;
+	
+	@OneToMany(mappedBy = "product")
+	private Set<Cart> carts;
+
+	public Set<Cart> getCarts() {
+		return carts;
+	}
+
+	public void setCarts(Set<Cart> carts) {
+		this.carts = carts;
+	}
 
 	public User() {
 		super();

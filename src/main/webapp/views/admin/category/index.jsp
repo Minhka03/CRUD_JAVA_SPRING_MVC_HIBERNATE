@@ -49,7 +49,7 @@
 							</div>
 						</form>
 						<div class="form-group me-2">
-							<a href="${pageContext.request.contextPath}/category/add"
+							<a href="${pageContext.request.contextPath}/admin/category/add"
 								class="btn btn-primary"><i class="fa-solid fa-plus"></i></a>
 						</div>
 					</div>
@@ -70,7 +70,7 @@
 								<td class="vertical-align-middle text-center">${c.categoryName}</td>
 								<td class="vertical-align-middle text-center">${c.categoryStatus ? "Actice": "Hidden"}</td>
 								<td class="vertical-align-middle text-center"><a
-									href="editCategory/${c.categoryId}" class="btn btn-primary"><i
+									href="category/editCategory/${c.categoryId}" class="btn btn-primary"><i
 										class="fa-solid fa-edit"></i> </a> <a
 									href="category/deleteCategory/${c.categoryId}"
 									class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>

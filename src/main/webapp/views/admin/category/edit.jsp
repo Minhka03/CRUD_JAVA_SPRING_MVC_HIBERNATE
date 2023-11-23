@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,30 +30,30 @@
 				<%@ include file="/common/admin/header.jsp"%>
 
 				<!--header-->
-				<form class="m-5" action="${pageContext.request.contextPath}/updateCategory" method="post" modelAttribute="list" >
+				<f:form class="m-5" action="${pageContext.request.contextPath}/admin/category/editCategory/${category.categoryId}" method="post" modelAttribute="category" >
 				<input type="hidden" name="categoryId" value="${category.categoryId}">
 					<h5 class="text-center">Thêm mới Danh mục Category</h5>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Tên Danh mục</label> <input type="text"
-								name="categoryName" value="${category.categoryName}" class="form-control">
-							<span class="text-danger" name="categoryName" ></span>
+							<label for="inputCity">Tên Danh mục</label> <f:input type="text"
+								path="categoryName" value="${category.categoryName}" class="form-control"/>
+							<f:errors path="categoryName" cssClass="text-danger"></f:errors>
 						</div>
 					</div>
 
 
 					<label for="inputCity">Trạng thái</label>
 					<div class="form-group col-md-6">
-						<input type="radio" name="categoryStatus"  checked="${category.categoryStatus ? 'checked': ''}"
-							value="1" >Active
+						<f:radiobutton path="categoryStatus"  checked="${category.categoryStatus ? 'checked': ''}"
+							value="1" />Active
 					</div>
 					<div class="form-group col-md-6">
-						<input type="radio" name="categoryStatus" checked="${category.categoryStatus ? 'checked': ''}"   value="0">Hidden
+						<f:radiobutton  path="categoryStatus" checked="${!category.categoryStatus ? 'checked': ''}"   value="0" />Hidden
 					</div>
 
 
 					<button type="submit" class="btn btn-primary">Add</button>
-				</form>
+				</f:form>
 
 				<div class="content-wrapper">
 

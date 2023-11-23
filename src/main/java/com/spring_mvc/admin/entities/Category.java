@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="categories")
@@ -18,21 +18,18 @@ public class Category {
 	@Column(name = "categoryId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryId;
-	@NotNull(message = "Ten ko de trong")
+	@NotEmpty(message = "Tên không được để trống")
 	@Column(name =  "categoryName")
 	private String categoryName;
 	@Column(name = "categoryStatus")
 	private Boolean categoryStatus;
-	
 	@OneToMany(mappedBy = "category")
 	private Set<Product> products;
 	
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
-
-
-	public Category(Integer categoryId, @NotNull(message = "Ten ko de trong") String categoryName,
+	public Category(Integer categoryId, @NotEmpty(message = "Tên không được để trống") String categoryName,
 			Boolean categoryStatus, Set<Product> products) {
 		super();
 		this.categoryId = categoryId;
@@ -40,8 +37,6 @@ public class Category {
 		this.categoryStatus = categoryStatus;
 		this.products = products;
 	}
-
-
 
 	public Integer getCategoryId() {
 		return categoryId;

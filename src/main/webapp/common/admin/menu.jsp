@@ -117,7 +117,7 @@
                 <span class="menu-header-text">Pages</span>
               </li>
               <li class="menu-item">
-                <a href="${pageContext.request.contextPath}/category" class="menu-link menu-toggle">
+                <a href="${pageContext.request.contextPath}/admin/category" class="menu-link menu-toggle">
                   <i class="menu-icon tf-icons bx bx-dock-top"></i>
                   <div data-i18n="Account Settings">Danh mục sản phẩm</div>
                 </a>
@@ -140,7 +140,7 @@
                 </ul>
               </li>
               <li class="menu-item">
-                <a href="${pageContext.request.contextPath}/product" class="menu-link menu-toggle">
+                <a href="${pageContext.request.contextPath}/admin/product" class="menu-link menu-toggle">
                   <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                   <div data-i18n="Authentications">Danh sách sản phẩm</div>
                 </a>

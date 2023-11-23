@@ -13,28 +13,44 @@
 	<context:component-scan
 		base-package="com.spring_mvc.admin" />
 	<context:annotation-config></context:annotation-config>
-	
+
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
-	
+
+
 	<mvc:resources location="/resources/"
 		mapping="/resources/**"></mvc:resources>
-	<bean
 
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- tạo bean tiles cấu hình đường dẫn tệp tin xml chưa các định nghĩa về 
+		template view -->
 
-		<property name="prefix">
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 
-			<value>/views/</value>
+		<property name="definitions">
+
+			<list>
+
+				<value>/WEB-INF/config/home-tiles.xml</value>
+			</list>
 
 		</property>
-		<property name="suffix">
 
-			<value>.jsp</value>
-
-		</property>
+		<property name="checkRefresh" value="true" />
 
 	</bean>
+
+	<!-- tạo bean viewResolver sử dụng cấu hình trong TilesView -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+
+	</bean>
+
+
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
