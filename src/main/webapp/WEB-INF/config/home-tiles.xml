@@ -35,11 +35,17 @@
 		<put-attribute name="body"
 			value="/views/home/product/product.jsp" />
 	</definition>
+	<definition name="shop" extends="homelayout">
+
+		<put-attribute name="body"
+			value="/views/home/shop.jsp" />
+	</definition>
 	<definition name="Cart" extends="homelayout">
 
 		<put-attribute name="body"
 			value="/views/home/cart.jsp" />
 	</definition>
+	
 
 	
 </tiles-definitions>

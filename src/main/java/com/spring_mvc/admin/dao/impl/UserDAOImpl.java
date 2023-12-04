@@ -31,4 +31,23 @@ public class UserDAOImpl implements UserDAO{
 		return null;
 	}
 
+	@Override
+	public boolean insert(User user) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return false;
+
+	}
+
 }

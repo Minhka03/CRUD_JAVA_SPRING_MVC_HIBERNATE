@@ -18,12 +18,6 @@ public class Cart {
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="name")
-	private String name;
-	@Column(name="image")
-	private String image;
-	@Column(name="price")
-	private Double price;
 	@Column(name="quantity")
 	private int quantity;
 	@Column(name="totalPrice")
@@ -41,13 +35,9 @@ public class Cart {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int id, String name, String image, Double price, int quantity, Double totalPrice, Product product,
-			User user) {
+	public Cart(int id, int quantity, Double totalPrice, Product product, User user) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.image = image;
-		this.price = price;
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 		this.product = product;
@@ -60,30 +50,6 @@ public class Cart {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
 	}
 
 	public int getQuantity() {
@@ -118,6 +84,5 @@ public class Cart {
 		this.user = user;
 	}
 	
-	
-	
+
 }

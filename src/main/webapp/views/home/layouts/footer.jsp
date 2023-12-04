@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
  <!-- footer start -->
         <footer class="mt-100 overflow-hidden footer-style-2">
             <div class="footer-top bg-5">
@@ -156,9 +157,19 @@
                             <li class="footer-menu-item"><a href="about-us.html">Privacy policy</a></li>
                             <li class="footer-menu-item"><a href="about-us.html">Terms & Conditions</a></li>
                         </ul>
-                        <p class="copyright footer-text">©<span class="current-year"></span> Spree Themes.</p>
+                        <p class="copyright footer-text">ï¿½<span class="current-year"></span> Spree Themes.</p>
                     </div>
+                    <form method="post" action="<c:url value="/j_spring_security_logout" />">
+							<a class="dropdown-item" href=""><input type="hidden"
+								name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<input 
+								type="submit" value="Logout" />
+							</a>
+
+						</form>
                 </div>
             </div>
+
+            
         </footer>
         <!-- footer end -->

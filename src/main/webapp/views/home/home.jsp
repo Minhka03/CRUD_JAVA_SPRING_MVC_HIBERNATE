@@ -148,7 +148,7 @@
                   		        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-duration="700">
                                 <div class="product-card">
                                     <div class="product-card-img">
-                                        <a class="hover-switch" href="collection-left-sidebar.html">
+                                        <a class="hover-switch" href="${pageContext.servletContext.contextPath}/product/${p.productId}">
                                             <img class="secondary-img" src="${pageContext.servletContext.contextPath}/resources/assets/img/products/shoe/9.jpg"
                                                 alt="product-img">
                                             <img class="primary-img" src="${pageContext.request.contextPath}/<c:url value="resources/uploads"/>/images/${p.image}"
@@ -180,7 +180,7 @@
                                                 </svg>
                                             </a>
 
-                                            <a href="addCart" class="action-card action-addtocart">
+                                            <a href="cart" class="action-card action-addtocart">
                                                 <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -202,8 +202,8 @@
                                             <a href="collection-left-sidebar.html">${p.productName}</a>
                                         </h3>
                                         <div class="product-card-price">
-                                            <span class="card-price-regular">${p.price}$</span>
-                                            <span class="card-price-compare text-decoration-line-through"> ${p.price*((100-p.sale_price)/100)}$</span>
+                                            <span class="card-price-regular">${p.price*((100-p.sale_price)/100)}$</span>
+                                            <span class="card-price-compare text-decoration-line-through">${p.price}$</span>
                                         </div>
                                     </div>
                                 </div>

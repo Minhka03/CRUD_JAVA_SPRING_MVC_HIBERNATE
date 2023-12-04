@@ -1,5 +1,6 @@
 package com.spring_mvc.admin.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -9,10 +10,18 @@ import org.springframework.stereotype.Repository;
 
 import com.spring_mvc.admin.dao.CartDAO;
 import com.spring_mvc.admin.entities.Cart;
+import com.spring_mvc.admin.entities.Product;
+import com.spring_mvc.admin.security.entities.CustomUserDetails;
 @Repository
 public class CartDAOImpl implements CartDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	private List<Cart> items;
+
+    public CartDAOImpl() {
+        this.items = new ArrayList<>();
+    }
 	
 	
 	@Override
@@ -20,7 +29,7 @@ public class CartDAOImpl implements CartDAO{
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
-			List list = session.createQuery("from Cart c ORDER BY c.id DESC").list();
+			List<Cart> list = session.createQuery("from Cart", Cart.class).list();
 			return list;
 		} catch (Exception e) {
 			// TODO: handle exception\
@@ -96,6 +105,5 @@ public class CartDAOImpl implements CartDAO{
 		return false;
 	}
 
-	
 
 }

@@ -110,16 +110,15 @@ public class ProductDAOImpl implements ProductDAO {
 		try {
 			List<Product> listPage = session.createQuery("from Product p ORDER BY p.productId DESC", Product.class)
 					.setFirstResult((pageno - 1 ) * pagesize ).setMaxResults(pagesize).getResultList();
-			return listPage;
+			return listPage; 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
-
 	@Override
 	public int count() {
-		int total = 0;
+		int total = 0; 
 		Session session = sessionFactory.openSession();
 		try {
 			total = session.createQuery("from Product", Product.class).list().size();

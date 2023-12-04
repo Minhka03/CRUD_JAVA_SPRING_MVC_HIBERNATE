@@ -1,3 +1,4 @@
+ <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
  <div class="body-wrapper">
         <!-- breadcrumb start -->
         <div class="breadcrumb">
@@ -25,7 +26,7 @@
                             </g>
                         </svg>
                     </li>
-                    <li>Accesories Lather Bag</li>
+                    <li>${product.productName}</li>
                 </ul>
             </div>
         </div>
@@ -47,7 +48,7 @@
                                     }'>
                                         <div class="img-large-wrapper">
                                             <a href="resources/assets/img/products/bags/39.jpg" data-fancybox="gallery">
-                                                <img src="${pageContext.servletContext.contextPath}/resources/assets/img/products/bags/39.jpg" alt="img">
+                                                <img src="${pageContext.request.contextPath}/<c:url value="resources/uploads"/>/images/${product.image}" alt="img">
                                             </a>
                                         </div>
                                         <div class="img-large-wrapper">
@@ -97,7 +98,7 @@
                                     }'>
                                         <div>
                                             <div class="img-thumb-wrapper">
-                                                <img src="${pageContext.servletContext.contextPath}/resources/assets/img/products/bags/39.jpg" alt="img">
+                                                <img src="${pageContext.request.contextPath}/<c:url value="resources/uploads"/>/images/${product.image}" alt="img">
                                             </div>
                                         </div>
                                         <div>
@@ -138,7 +139,7 @@
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="product-details ps-lg-4">
                                 <div class="mb-3"><span class="product-availability">In Stock</span></div>
-                                <h2 class="product-title mb-3">Accesories Lather bag</h2>
+                                <h2 class="product-title mb-3">${product.productName}</h2>
                                 <div class="product-rating d-flex align-items-center mb-3">
                                     <span class="star-rating">
                                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,8 +161,8 @@
                                     <span class="rating-count ms-2">(22)</span>
                                 </div>
                                 <div class="product-price-wrapper mb-4">
-                                    <span class="product-price regular-price">$24.00</span>
-                                    <del class="product-price compare-price ms-2">$32.00</del>
+                                    <span class="product-price regular-price">${product.price*((100-product.sale_price)/100)}$</span>
+                                    <del class="product-price compare-price ms-2">${product.price}$</del>
                                 </div>
                                 <div class="product-sku product-meta mb-1">
                                     <strong class="label">SKU:</strong> 401
@@ -242,8 +243,9 @@
                                     </div>
                                 </div>
 
-                                <form class="product-form" action="#">
+                                <form class="product-form" method="post" action="${pageContext.servletContext.contextPath}/cart">
                                     <div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
+                                    <input type="hidden" name="productId" value="${product.productId}"> 
                                         <button type="submit" class="position-relative btn-atc btn-add-to-cart loader">ADD TO CART</button>
                                         <a href="wishlist.html" class="product-wishlist">
                                             <svg class="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">

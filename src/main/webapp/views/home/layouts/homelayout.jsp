@@ -50,6 +50,9 @@
 		
 		 <script src="${pageContext.servletContext.contextPath}/resources/assets/js/vendor.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/main.js"></script>
+        
+        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/jquery-3.6.0.min.js"></script>
+        
 
 </body>
 

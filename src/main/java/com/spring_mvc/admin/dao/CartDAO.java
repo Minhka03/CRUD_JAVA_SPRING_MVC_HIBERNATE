@@ -2,6 +2,7 @@ package com.spring_mvc.admin.dao;
 
 import java.util.List;
 import com.spring_mvc.admin.entities.Cart;
+import com.spring_mvc.admin.entities.Product;
 public interface CartDAO {
 
 	public List<Cart> getAll();
